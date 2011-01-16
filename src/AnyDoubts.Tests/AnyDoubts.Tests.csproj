@@ -31,6 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.5.5.10112, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpTestsEx.NUnit">
+      <HintPath>..\..\lib\SharpTestsEx.NUnit.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,20 +47,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\QuestionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
-    <Folder Include="Model\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AnyDoubts.Domain\AnyDoubts.Domain.csproj">
+      <Project>{BCF8FFEE-BAB5-4CAA-9020-3A02AE2505F1}</Project>
+      <Name>AnyDoubts.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AnyDoubts.Infra\AnyDoubts.Infra.csproj">
       <Project>{B4B140B0-F6FD-4204-B706-C768B5E5DAE6}</Project>
       <Name>AnyDoubts.Infra</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AnyDoubts.Model\AnyDoubts.Model.csproj">
-      <Project>{7062997D-8816-4F34-B966-79DE87106C3D}</Project>
-      <Name>AnyDoubts.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\AnyDoubts.Web\AnyDoubts.Web.csproj">
       <Project>{F94A05DC-33A0-4F67-988F-02E4FD57FA65}</Project>

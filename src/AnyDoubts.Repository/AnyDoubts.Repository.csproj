@@ -43,9 +43,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AnyDoubts.Model\AnyDoubts.Model.csproj">
-      <Project>{7062997D-8816-4F34-B966-79DE87106C3D}</Project>
-      <Name>AnyDoubts.Model</Name>
+    <Folder Include="Repositories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AnyDoubts.Domain\AnyDoubts.Domain.csproj">
+      <Project>{BCF8FFEE-BAB5-4CAA-9020-3A02AE2505F1}</Project>
+      <Name>AnyDoubts.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

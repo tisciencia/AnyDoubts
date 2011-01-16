@@ -127,10 +127,6 @@
       <Project>{B4B140B0-F6FD-4204-B706-C768B5E5DAE6}</Project>
       <Name>AnyDoubts.Infra</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AnyDoubts.Model\AnyDoubts.Model.csproj">
-      <Project>{7062997D-8816-4F34-B966-79DE87106C3D}</Project>
-      <Name>AnyDoubts.Model</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AnyDoubts.Repository\AnyDoubts.Repository.csproj">
       <Project>{CBA104A8-BA47-43A8-8E0E-1001AC7D1FEE}</Project>
       <Name>AnyDoubts.Repository</Name>
