@@ -24,28 +24,22 @@ namespace AnyDoubts.Domain.Entities
         {
             get 
             {
-                if (String.IsNullOrEmpty(_answer))
-                    return false;
-                else
-                    return true;
+                return !String.IsNullOrEmpty(_answer);
             }
         }
         
         private Question() { }
         public Question(string message)
         {
-            if (IsMessageValid(message))
-                this._message = message;
-            else
-                throw new ArgumentException("Iinvalid message");
+            if (!IsMessageValid(message))
+		throw new ArgumentException("Iinvalid message");                
+		
+	    this._message = message;                
         }
 
         public bool IsMessageValid(string message)
         {
-            if ((String.IsNullOrEmpty(message)) || (message.Trim().Length > MESSAGE_MAX_LENGTH))
-                return false;
-            else 
-                return true;
+            return (!(String.IsNullOrEmpty(message)) && (message.Trim().Length <= MESSAGE_MAX_LENGTH));
         }        
     }
 }
