@@ -54,9 +54,9 @@
     <Folder Include="Controller\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AnyDoubts.Domain\AnyDoubts.Domain.csproj">
-      <Project>{BCF8FFEE-BAB5-4CAA-9020-3A02AE2505F1}</Project>
-      <Name>AnyDoubts.Domain</Name>
+    <ProjectReference Include="..\AnyDoubts.Domain.Model\AnyDoubts.Domain.Model.csproj">
+      <Project>{7CFF62B5-AE85-4186-885B-A363A4EB28C0}</Project>
+      <Name>AnyDoubts.Domain.Model</Name>
     </ProjectReference>
     <ProjectReference Include="..\AnyDoubts.Infra\AnyDoubts.Infra.csproj">
       <Project>{B4B140B0-F6FD-4204-B706-C768B5E5DAE6}</Project>

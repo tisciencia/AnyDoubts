@@ -127,10 +127,6 @@
       <Project>{B4B140B0-F6FD-4204-B706-C768B5E5DAE6}</Project>
       <Name>AnyDoubts.Infra</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AnyDoubts.Repository\AnyDoubts.Repository.csproj">
-      <Project>{CBA104A8-BA47-43A8-8E0E-1001AC7D1FEE}</Project>
-      <Name>AnyDoubts.Repository</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
