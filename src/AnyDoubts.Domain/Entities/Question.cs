@@ -22,10 +22,7 @@ namespace AnyDoubts.Domain.Entities
         }
         public bool IsAnswered
         {
-            get 
-            {
-                return !String.IsNullOrEmpty(_answer);
-            }
+            get { return !String.IsNullOrEmpty(_answer); }
         }
         
         private Question() { }
