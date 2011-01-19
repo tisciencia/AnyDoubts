@@ -1,8 +1,25 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "AnyDoubts - Home";
 }
 
+@inherits System.Web.Mvc.WebViewPage<IList<AnyDoubts.Domain.Model.Question>>
+
 <h2>@ViewBag.Message</h2>
-<p>
-    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+
+@using (Html.BeginForm())
+{ 
+<p>    
+    @Html.TextArea("question")
 </p>
+<p>
+    <input type="submit" name="Send" id="send" value="Send" />
+</p>
+}
+
+<ul>        
+    @foreach(var q in Model) {
+    <li>
+        Pergunta: @Html.Label(q.Message) - Resposta:  @Html.Label(q.Answer)
+    </li>
+    }
+</ul>
