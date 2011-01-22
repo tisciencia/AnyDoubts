@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Domain\QuestionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\QuestionRepositoryTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
@@ -57,6 +58,14 @@
     <ProjectReference Include="..\AnyDoubts.Domain.Model\AnyDoubts.Domain.Model.csproj">
       <Project>{7CFF62B5-AE85-4186-885B-A363A4EB28C0}</Project>
       <Name>AnyDoubts.Domain.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AnyDoubts.Domain.Repository\AnyDoubts.Domain.Repository.csproj">
+      <Project>{0C8B6C9B-8C39-4DA4-AA1C-801E32E1E709}</Project>
+      <Name>AnyDoubts.Domain.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AnyDoubts.Infra.Repository\AnyDoubts.Infra.Repository.csproj">
+      <Project>{FA22F632-9BA0-4A59-8498-DE54B512922F}</Project>
+      <Name>AnyDoubts.Infra.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\AnyDoubts.Infra\AnyDoubts.Infra.csproj">
       <Project>{B4B140B0-F6FD-4204-B706-C768B5E5DAE6}</Project>

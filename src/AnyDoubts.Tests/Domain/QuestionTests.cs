@@ -75,5 +75,14 @@ namespace AnyDoubts.Tests.Domain
             
             question.IsAnswered.Should().Be(false);
         }
+
+        [Test]
+        public void QuestionShouldBeNotEqual()
+        {
+            Question question1 = new Question("Olá tudo bem?");
+            Question question2 = new Question("Olá tudo bem?");
+
+            question1.Equals(question2).Should().Be(false);
+        }
     }
 }
