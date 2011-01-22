@@ -54,10 +54,9 @@ namespace AnyDoubts.Infra.Repository
             _Db4oManager.Delete(entity);            
         }
 
-        public T QueryByExample(T entity)
+        public IList<T> GetAll()
         {
-            var result = _Db4oManager.QueryByExample(entity);
-            return (T)result.Next();
+            return GetQuery().ToList();
         }
 
         public void Commit()

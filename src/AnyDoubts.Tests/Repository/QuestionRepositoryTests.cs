@@ -14,38 +14,29 @@ namespace AnyDoubts.Tests.Repository
     [TestFixture]
     public class QuestionRepositoryTests
     {
-        [Test]
-        public void PersistQuestion()
-        {
-            Question q = new Question("pergunta teste.");
-            Question q2 = new Question("pergunta teste.");
-            try
-            {
-                QuestionRepository qr = new QuestionRepository();
-                Question q1 = qr.QueryByExample(q);
+        //[Test]
+        //public void PersistQuestion()
+        //{
+        //    Question q = new Question("pergunta teste.");
+        //    Question q2 = new Question("pergunta teste.");
+        //    try
+        //    {
+        //        QuestionRepository qr = new QuestionRepository();
+        //        //Question q1 = qr.QueryByExample(q);
 
-                ISessionManager session = SessionManagerFactory.GetInstance();
-
-                if (qr.IsStored(q1))
-                {                     
-                }
                 
+        //        qr.Add(q);
+        //        qr.Commit();
 
-                qr.Add(q);
-
-
-                if (qr.IsStored(q1))
-                {
-                }
                 
-                //Assert.True(q1.Equals(q2));
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail(ex.Message);
-            }
-        }
-                
+        //        //Assert.True(q1.Equals(q2));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Assert.Fail(ex.Message);
+        //    }
+        //}
+
         //[Test]
         //public void LoadQuestion()
         //{
@@ -53,17 +44,15 @@ namespace AnyDoubts.Tests.Repository
 
         //    try
         //    {
-        //        ObjectContainerManager container = new ObjectContainerManager();
 
-        //        QuestionRepository qr = new QuestionRepository(container);
+        //        QuestionRepository qr = new QuestionRepository();
+        //        Question q1 = qr.GetAll().First();
 
-        //        List<Question> lista = qr.GetAll();
+        //        q1.Answer = "resposta teste.";
 
-        //        lista.Count.Should().Be(2);
+        //        qr.Update(q1);
+        //        qr.Commit();
                 
-        //        RepositoryContext rc = new RepositoryContext(container);
-        //        rc.SaveChanges();
-        //        rc.Terminate();
         //    }
         //    catch (Exception ex)
         //    {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Collections;
 
 namespace AnyDoubts.Domain.Repositoy
 {
@@ -18,6 +19,8 @@ namespace AnyDoubts.Domain.Repositoy
 
         void Delete(T entity);
 
-        void Commit();        
+        void Commit();
+
+        IList<T> GetAll();
     }
 }

@@ -9,13 +9,13 @@ namespace AnyDoubts.Domain.Model
     {
         private const int MESSAGE_MAX_LENGTH = 255;
 
-        private Guid _id;        
+        private DateTime _creationDate;
         private string _message;
         private string _answer;
-
-        public Guid ID
+        
+        public DateTime CreationDate
         {
-            get { return _id; }
+            get { return _creationDate; }
         }
         public string Message
         {
@@ -37,7 +37,7 @@ namespace AnyDoubts.Domain.Model
             if (!IsMessageValid(message))
 		        throw new ArgumentException("Iinvalid message");
 
-            this._id = Guid.NewGuid();
+            this._creationDate = DateTime.Now;
 	        this._message = message;                
         }
 
@@ -48,7 +48,7 @@ namespace AnyDoubts.Domain.Model
         
         public override int GetHashCode()
         {
-            return _id.GetHashCode();
+            return (_creationDate.ToString() + _message).GetHashCode();
         }
     }
 }
