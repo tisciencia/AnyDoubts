@@ -5,7 +5,7 @@ using AnyDoubts.Domain.Model;
 
 namespace AnyDoubts.Domain.Repositoy
 {
-    public interface IQuestions : IRepository
+    public interface IQuestions : IRepository, IGenericRepository<Question>
     {
         
     }

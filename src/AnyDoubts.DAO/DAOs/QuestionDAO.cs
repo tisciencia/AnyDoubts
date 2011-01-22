@@ -5,9 +5,9 @@ using System.Text;
 using AnyDoubts.Domain.Repositoy;
 using AnyDoubts.Domain.Model;
 
-namespace AnyDoubts.Infra.Repository
+namespace AnyDoubts.DAO
 {
-    public class QuestionRepository : GenericRepository<Question>, IQuestions
+    public class QuestionRepository : GenericDAO<Question>, IQuestions
     {
     }
 }

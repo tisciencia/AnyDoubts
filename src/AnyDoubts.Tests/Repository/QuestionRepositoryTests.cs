@@ -5,8 +5,7 @@ using System.Text;
 using NUnit.Framework;
 using AnyDoubts.Domain.Model;
 using AnyDoubts.Domain.Repositoy;
-using AnyDoubts.Infra.Repository.Repositories;
-using AnyDoubts.Infra.Repository;
+using AnyDoubts.DAO;
 using SharpTestsEx;
 
 namespace AnyDoubts.Tests.Repository
@@ -14,28 +13,18 @@ namespace AnyDoubts.Tests.Repository
     [TestFixture]
     public class QuestionRepositoryTests
     {
-        //[Test]
-        //public void PersistQuestion()
-        //{
-        //    Question q = new Question("pergunta teste.");
-        //    Question q2 = new Question("pergunta teste.");
-        //    try
-        //    {
-        //        QuestionRepository qr = new QuestionRepository();
-        //        //Question q1 = qr.QueryByExample(q);
+        [Test]
+        public void PersistQuestion()
+        {
+            Question q = new Question("pergunta teste.");
 
-                
-        //        qr.Add(q);
-        //        qr.Commit();
+            IQuestions questions = DAOFactory.Get<IQuestions>();
 
-                
-        //        //Assert.True(q1.Equals(q2));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Assert.Fail(ex.Message);
-        //    }
-        //}
+            questions.Add(q);
+            //Question q1 = qr.QueryByExample(q);
+
+                       
+        }
 
         //[Test]
         //public void LoadQuestion()
@@ -52,7 +41,7 @@ namespace AnyDoubts.Tests.Repository
 
         //        qr.Update(q1);
         //        qr.Commit();
-                
+
         //    }
         //    catch (Exception ex)
         //    {
