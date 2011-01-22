@@ -128,9 +128,17 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AnyDoubts.DAO\AnyDoubts.DAO.csproj">
+      <Project>{01DE759A-A0B9-4487-AB10-4B38A4DA185D}</Project>
+      <Name>AnyDoubts.DAO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AnyDoubts.Domain.Model\AnyDoubts.Domain.Model.csproj">
       <Project>{7CFF62B5-AE85-4186-885B-A363A4EB28C0}</Project>
       <Name>AnyDoubts.Domain.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AnyDoubts.Domain.Repository\AnyDoubts.Domain.Repository.csproj">
+      <Project>{0C8B6C9B-8C39-4DA4-AA1C-801E32E1E709}</Project>
+      <Name>AnyDoubts.Domain.Repository</Name>
     </ProjectReference>
     <ProjectReference Include="..\AnyDoubts.Infra\AnyDoubts.Infra.csproj">
       <Project>{B4B140B0-F6FD-4204-B706-C768B5E5DAE6}</Project>

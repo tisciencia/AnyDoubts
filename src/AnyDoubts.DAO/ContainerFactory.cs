@@ -5,6 +5,7 @@ using System.Web;
 using System.IO;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 
 namespace AnyDoubts.DAO
 {
@@ -15,7 +16,7 @@ namespace AnyDoubts.DAO
         public static IObjectContainer GetObjectContainerManager()
         {
             if (_current == null)
-                _current = Db4oFactory.OpenFile("AnyDoubts.db4o");   //_objectContainer = Db4oFactory.OpenFile(ConfigurationSettings.AppSettings["db4o.path"]);
+                _current = Db4oFactory.OpenFile(ConfigurationSettings.AppSettings["Db4o.path"]);
             return _current;
         }
     }
