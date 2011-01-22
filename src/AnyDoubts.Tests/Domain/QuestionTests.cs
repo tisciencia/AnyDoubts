@@ -77,7 +77,7 @@ namespace AnyDoubts.Tests.Domain
         }
 
         [Test]
-        public void QuestionObjectShouldBeDif()
+        public void QuestionObjectShouldBeDiff()
         {
             Question question1 = new Question("Olá tudo bem?");
             Question question2 = new Question("Olá tudo bem?");

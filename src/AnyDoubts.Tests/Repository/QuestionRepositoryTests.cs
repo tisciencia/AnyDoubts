@@ -14,39 +14,11 @@ namespace AnyDoubts.Tests.Repository
     public class QuestionRepositoryTests
     {
         [Test]
-        public void PersistQuestion()
+        public void DAOFactoryTest()
         {
-            Question q = new Question("pergunta teste.");
-
             IQuestions questions = DAOFactory.Get<IQuestions>();
 
-            questions.Add(q);
-            //Question q1 = qr.QueryByExample(q);
-
-                       
+            questions.Should().Not.Be(null);
         }
-
-        //[Test]
-        //public void LoadQuestion()
-        //{
-        //    Question q = new Question("pergunta teste");
-
-        //    try
-        //    {
-
-        //        QuestionRepository qr = new QuestionRepository();
-        //        Question q1 = qr.GetAll().First();
-
-        //        q1.Answer = "resposta teste.";
-
-        //        qr.Update(q1);
-        //        qr.Commit();
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Assert.Fail(ex.Message);
-        //    }
-        //}
     }
 }

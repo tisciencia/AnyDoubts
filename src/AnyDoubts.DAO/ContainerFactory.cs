@@ -16,7 +16,7 @@ namespace AnyDoubts.DAO
         public static IObjectContainer GetObjectContainerManager()
         {
             if (_current == null)
-                _current = Db4oFactory.OpenFile(ConfigurationSettings.AppSettings["Db4o.path"]);
+                _current = Db4oFactory.OpenFile("AnyDoubtsDB.db4o"); //_current = Db4oFactory.OpenFile(ConfigurationSettings.AppSettings["Db4o.path"]);
             return _current;
         }
     }
