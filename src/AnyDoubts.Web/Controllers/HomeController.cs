@@ -14,17 +14,20 @@ namespace AnyDoubts.Web.Controllers
         public ActionResult Index()
         {            
             ViewBag.Message = "Ask me anything";
-            IQuestions questions = DAOFactory.Get<IQuestions>();
-            return View(questions.GetAll());
+            //IQuestions questions = DAOFactory.Get<IQuestions>();
+            //return View(questions.GetAll());
+            return View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Index(string question)
-        {            
-            IQuestions questions = DAOFactory.Get<IQuestions>();
-            questions.Add(new Question(question));
-            questions.Commit();
-            return View(questions.GetAll());
+        {
+            ViewBag.Message = "Ask me anything";
+            //IQuestions questions = DAOFactory.Get<IQuestions>();
+            //questions.Add(new Question(question));
+            //questions.Commit();
+            //return View(questions.GetAll());
+            return View();
         }
 
         public ActionResult Sobre()

@@ -6,9 +6,14 @@ using Db4objects.Db4o;
 
 namespace AnyDoubts.DAO
 {
-    public  class SessionManager : ISessionManager
+    public class SessionManager : ISessionManager
     {
-        private static IObjectContainer _Db4oManager = ContainerFactory.GetObjectContainerManager();
+        private static IObjectContainer _Db4oManager;
+
+        public SessionManager()
+        {
+            _Db4oManager = ContainerFactory.CreateSession().OpenClient();
+        }
 
         public bool IsClosed()
         {
@@ -28,6 +33,7 @@ namespace AnyDoubts.DAO
         public void Dispose()
         {
             _Db4oManager.Ext().Dispose();
+            _Db4oManager = null;
         }
 
         public void Close()

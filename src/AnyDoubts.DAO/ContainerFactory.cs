@@ -11,13 +11,25 @@ namespace AnyDoubts.DAO
 {
     public static class ContainerFactory
     {
-        private static IObjectContainer _current;
+        private static IObjectServer _server;
 
-        public static IObjectContainer GetObjectContainerManager()
+        public static IObjectServer CreateSession()
         {
-            if (_current == null)
-                _current = Db4oFactory.OpenFile("AnyDoubtsDB.db4o"); //_current = Db4oFactory.OpenFile(ConfigurationSettings.AppSettings["Db4o.path"]);
-            return _current;
+            if (_server == null)
+            {
+                string dbPath = System.Configuration.ConfigurationManager.ConnectionStrings["ObjectStore"].ConnectionString;
+
+                if (dbPath.Contains("|DataDirectory|"))
+                {
+                    dbPath = dbPath.Replace("|DataDirectory|", "");
+                    string appDir = HttpContext.Current.Server.MapPath("~/App_Data/");
+                    dbPath = Path.Combine(appDir, dbPath);
+                }
+                                
+                _server = Db4oFactory.OpenServer(dbPath, 0);
+            }
+
+            return _server;
         }
     }
 }

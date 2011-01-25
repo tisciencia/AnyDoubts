@@ -19,7 +19,7 @@ namespace AnyDoubts.DAO
 
         public GenericDAO()
         {
-            _Db4oManager = ContainerFactory.GetObjectContainerManager();            
+            _Db4oManager = ContainerFactory.CreateSession().OpenClient();
         }       
 
         private IQueryable<T> GetQuery()
