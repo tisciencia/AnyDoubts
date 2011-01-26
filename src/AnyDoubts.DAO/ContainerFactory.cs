@@ -19,9 +19,9 @@ namespace AnyDoubts.DAO
             {
                 string dbPath = System.Configuration.ConfigurationManager.ConnectionStrings["ObjectStore"].ConnectionString;
 
-                if (dbPath.Contains("|DataDirectory|"))
+                if (dbPath.Contains("|DataDirectoryWebApp|"))
                 {
-                    dbPath = dbPath.Replace("|DataDirectory|", "");
+                    dbPath = dbPath.Replace("|DataDirectoryWebApp|", "");
                     string appDir = HttpContext.Current.Server.MapPath("~/App_Data/");
                     dbPath = Path.Combine(appDir, dbPath);
                 }
