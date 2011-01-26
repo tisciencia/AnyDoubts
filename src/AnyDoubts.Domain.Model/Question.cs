@@ -26,7 +26,9 @@ namespace AnyDoubts.Domain.Model
         {
             get { return !String.IsNullOrEmpty(_answer); }
         }
-        
+
+        public int UserId { get; set; }
+
         private Question() { }
         public Question(string message)
         {

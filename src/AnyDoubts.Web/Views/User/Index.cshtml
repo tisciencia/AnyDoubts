@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AnyDoubts.Domain.Model.Question>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+@if (ViewBag.Message != null)
+{ 
+    <p>@ViewBag.Message</p>
+}
+else
+{ 
+    <table>
+    <tr>
+        <th></th>
+        <th>
+            Message
+        </th>
+        <th>
+            Answer
+        </th>
+        <th>
+            IsAnswered
+        </th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+        <td>
+            @item.Message
+        </td>
+        <td>
+            @item.Answer
+        </td>
+        <td>
+            @item.IsAnswered
+        </td>
+    </tr>
+}
+
+</table>   
+}
+

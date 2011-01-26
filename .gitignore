@@ -13,3 +13,6 @@ build/
 pkg/
 
 TestResults/
+src/_ReSharper.AnyDoubts/
+*.bak
+*.db4o

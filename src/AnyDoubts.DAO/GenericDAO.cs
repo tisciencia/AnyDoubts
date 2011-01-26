@@ -22,7 +22,7 @@ namespace AnyDoubts.DAO
             _Db4oManager = ContainerFactory.CreateSession().OpenClient();
         }       
 
-        private IQueryable<T> GetQuery()
+        protected IQueryable<T> GetQuery()
         {
             var query = from T c in _Db4oManager
                         select c;
