@@ -15,8 +15,7 @@ namespace AnyDoubts.Web.Controllers
         {            
             ViewBag.Message = "Ask me anything";
             IQuestions questions = DAOFactory.Get<IQuestions>();
-            return View(questions.GetAll());
-            //return View();
+            return View(questions.GetAll());            
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -26,11 +25,10 @@ namespace AnyDoubts.Web.Controllers
             IQuestions questions = DAOFactory.Get<IQuestions>();
             questions.Add(new Question(question));
             questions.Commit();
-            return View(questions.GetAll());
-            //return View();
+            return View(questions.GetAll());            
         }
         
-        public ActionResult TodoList()
+        public ActionResult Kanban()
         {
             return View();
         }
