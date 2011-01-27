@@ -34,7 +34,7 @@ namespace AnyDoubts.Domain.Model
         {
             if (!IsMessageValid(message))
 		        throw new ArgumentException("Iinvalid message");
-
+                        
             this._id = Guid.NewGuid();
 	        this._message = message;                
         }
@@ -45,7 +45,7 @@ namespace AnyDoubts.Domain.Model
         }
         
         public override int GetHashCode()
-        {
+        {            
             return _id.GetHashCode();
         }
     }
