@@ -2,7 +2,7 @@
   <PropertyGroup> 
     <BuildDir>$(MSBuildProjectDirectory)\build\</BuildDir>
 
-	<TestAssembly>$(BuildDir)AnyDoubts.Tests.dll</TestAssembly>
+	<TestAssembly>$(BuildDir)AnyDoubts.Tests.dll</TestAssembly>	
 	
     <SourceDir>src\</SourceDir>
     <Configuration>Release</Configuration>
@@ -42,7 +42,7 @@
   </Target>
 
   <Target Name="Test" DependsOnTargets="Build">
-    <Nunit Assemblies="$(TestAssembly)" ToolPath="util\nunit"/>
+    <Nunit Assemblies="$(TestAssembly)" ToolPath="util\nunit"/>	
   </Target>
 
 </Project>
