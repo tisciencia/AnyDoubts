@@ -3,7 +3,7 @@ using AnyDoubts.Domain.Model;
 
 namespace AnyDoubts.Domain.Repositoy
 {
-    public interface IQuestions : IRepository, IGenericRepository<Question>
+    public interface IQuestions : IGenericRepository<Question>
     {
         IList<Question> FromUser(string username);
     }

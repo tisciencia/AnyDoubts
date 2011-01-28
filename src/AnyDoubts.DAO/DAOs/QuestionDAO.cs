@@ -5,7 +5,7 @@ using AnyDoubts.Domain.Model;
 
 namespace AnyDoubts.DAO
 {
-    public class QuestionRepository : GenericDAO<Question>, IQuestions
+    public class QuestionDAO : GenericDAO<Question>, IQuestions
     {
         public IList<Question> FromUser(string username)
         {
