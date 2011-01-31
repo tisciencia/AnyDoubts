@@ -12,7 +12,7 @@ namespace AnyDoubts.Domain.Model
         private Guid _id;
         private string _message;
         private string _answer;
-        
+                
         public string Message
         {
             get { return _message; }            
@@ -26,7 +26,7 @@ namespace AnyDoubts.Domain.Model
         {
             get { return !String.IsNullOrEmpty(_answer); }
         }
-
+        
         public int UserId { get; set; }
 
         private Question() { }

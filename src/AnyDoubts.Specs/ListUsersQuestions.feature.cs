@@ -30,8 +30,8 @@ namespace AnyDoubts.Specs
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "List a user\'s answered questions", "In order to satisfy my curiosity about a given user\nAs a visitor of the site\nI wa" +
-                    "nt to see all the questions answered by that user", GenerationTargetLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "List a user\'s answered questions", "In order to satisfy my curiosity about a given user\r\nAs a visitor of the site\r\nI " +
+                    "want to see all the questions answered by that user", GenerationTargetLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
