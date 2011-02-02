@@ -16,15 +16,11 @@ else
 { 
     <table>
     <tr>
-        <th></th>
         <th>
             Message
         </th>
         <th>
             Answer
-        </th>
-        <th>
-            IsAnswered
         </th>
     </tr>
 
@@ -32,18 +28,10 @@ else
 {
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-        <td>
             @item.Message
         </td>
         <td>
             @item.Answer
-        </td>
-        <td>
-            @item.IsAnswered
         </td>
     </tr>
 }

@@ -56,6 +56,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\UserControllerTests.cs" />
     <Compile Include="Domain\QuestionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DAOFactoryTests.cs" />
@@ -65,7 +66,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BDD\" />
-    <Folder Include="Controller\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AnyDoubts.DAO\AnyDoubts.DAO.csproj">

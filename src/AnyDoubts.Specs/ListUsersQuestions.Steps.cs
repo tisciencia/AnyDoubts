@@ -1,65 +1,82 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using AnyDoubts.DAO;
+using AnyDoubts.DAO.DAOs;
 using AnyDoubts.Domain.Model;
 using AnyDoubts.Domain.Repositoy;
 using AnyDoubts.Web.Controllers;
 using Moq;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Utils;
-using WatiN.Core;
+using Table = TechTalk.SpecFlow.Table;
 
 namespace AnyDoubts.Specs
 {
     [Binding]
     public class ListUsersQuestions
     {
-        private Mock<IQuestions> _mock;
-        private UserController _userController;
-
-        private IE CurrentBrowser
-        {
-            get { return ScenarioContext.Current["browser"] as IE; }   
-            set { ScenarioContext.Current["browser"] = value; }
-        }
+        private readonly Mock<IQuestions> _mock;
+        private User _currentUser;
+        private readonly UserController _userController;
+        private ActionResult _result;
+        private List<Question> _expectedQuestions;
 
         public ListUsersQuestions()
         {
             _mock = new Mock<IQuestions>();
+            _userController = new UserController(_mock.Object);
         }
 
         [Given(@"I am a visitor")]
-        public void GivenIAmAVisitor()
+        public void GivenIamAVisitor()
         {
         }
 
         [Given(@"There is a user called ""(.*)""")]
         public void GivenThereIsAUserCalledVintem(string username)
         {
-            new User(username);
+            _currentUser = new User(username);
+            var userRepository = new UserRepository();
+            userRepository.Add(_currentUser);
+            userRepository.Commit();
         }
 
         [Given(@"the user ""(.*)"" has no answered questions")]
         public void GivenTheUserVintemHasNoAnsweredQuestions(string username)
         {
             _mock.Setup(q => q.FromUser(username)).Returns(new List<Question>());
-            _userController = new UserController(_mock.Object);
         }
 
-        [When(@"I visit ""(.*)""'s profile  page")]
+        [When(@"I visit ""(.*)""'s profile page")]
         public void WhenIVisitVintemSProfilePage(string username)
         {
-            //CurrentBrowser = new IE(string.Format("http://localhost:4265/{0}", username));
-            var actionResult = _userController.Index(username);
-            ScenarioContext.Current.Set(actionResult);
+            _result = _userController.Index(username);
         }
 
         [Then(@"I should see ""(.*)""")]
         public void ThenIShouldSeeTheUserHasNotAnsweredAnyQuestions(string message)
         {
-            var result = (ViewResult)ScenarioContext.Current.Get<ActionResult>();
-            Assert.AreEqual(message, result.ViewBag.Message);
+            var viewResult = _result as ViewResult;
+            Assert.AreEqual(message, viewResult.ViewBag.Message);
+        }
+
+        [Given(@"the user ""vintem"" has the following questions")]
+        public void GivenTheUserVintemHasTheFollowingQuestions(Table table)
+        {
+            _expectedQuestions = new List<Question>();
+            foreach (var row in table.Rows)
+            {
+                var question = new Question(row["Question"]) { Answer = row["Answer"], To = _currentUser };
+                _expectedQuestions.Add(question);
+            }
+            _mock.Setup(x => x.FromUser(It.IsAny<string>())).Returns(_expectedQuestions);
+        }
+
+        [Then(@"I should see")]
+        public void ThenIShouldSee(Table table)
+        {
+            var viewResult = _result as ViewResult;
+            Assert.IsInstanceOf(typeof(IEnumerable<Question>), viewResult.Model);
+            Assert.AreEqual(_expectedQuestions, viewResult.Model);
         }
     }
 }

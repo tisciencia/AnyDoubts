@@ -9,7 +9,7 @@ namespace AnyDoubts.DAO
     {
         public IList<Question> FromUser(string username)
         {
-            return GetQuery().Where(c => c.IsAnswered && c.UserId == 1).ToList();
+            return GetQuery().Where(c => c.IsAnswered && c.To.Username.Equals(username)).ToList();
         }
     }
 }

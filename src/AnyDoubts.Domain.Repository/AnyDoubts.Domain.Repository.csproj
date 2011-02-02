@@ -44,6 +44,7 @@
     <Compile Include="Repositories\IQuestions.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AnyDoubts.Domain.Model\AnyDoubts.Domain.Model.csproj">

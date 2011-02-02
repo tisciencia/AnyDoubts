@@ -67,9 +67,50 @@ this.ScenarioSetup(scenarioInfo);
 #line 9
  testRunner.And("the user \"vintem\" has no answered questions");
 #line 10
- testRunner.When("I visit \"vintem\"\'s profile  page");
+ testRunner.When("I visit \"vintem\"\'s profile page");
 #line 11
  testRunner.Then("I should see \"The user has not answered any questions\"");
+#line hidden
+            testRunner.CollectScenarioErrors();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Listing the questions for a user that has answered questions")]
+        public virtual void ListingTheQuestionsForAUserThatHasAnsweredQuestions()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Listing the questions for a user that has answered questions", ((string[])(null)));
+#line 13
+this.ScenarioSetup(scenarioInfo);
+#line 14
+ testRunner.Given("I am a visitor");
+#line 15
+  testRunner.And("There is a user called \"vintem\"");
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Question",
+                        "Answer"});
+            table1.AddRow(new string[] {
+                        "Who are you?",
+                        "I am vintem"});
+            table1.AddRow(new string[] {
+                        "What is your favorite movie?",
+                        "The Last Dragon"});
+#line 16
+  testRunner.And("the user \"vintem\" has the following questions", ((string)(null)), table1);
+#line 20
+ testRunner.When("I visit \"vintem\"\'s profile page");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Question",
+                        "Answer"});
+            table2.AddRow(new string[] {
+                        "Who are you?",
+                        "I am vintem"});
+            table2.AddRow(new string[] {
+                        "What is your favorite movie?",
+                        "The Last Dragon"});
+#line 21
+ testRunner.Then("I should see", ((string)(null)), table2);
 #line hidden
             testRunner.CollectScenarioErrors();
         }

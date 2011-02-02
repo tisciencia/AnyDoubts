@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace AnyDoubts.Domain.Model
 {
@@ -12,7 +9,8 @@ namespace AnyDoubts.Domain.Model
         private Guid _id;
         private string _message;
         private string _answer;
-        
+        public User To { get; set; }
+
         public string Message
         {
             get { return _message; }            
