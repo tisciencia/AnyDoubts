@@ -3,6 +3,7 @@ using AnyDoubts.DAO;
 using Ninject;
 using AnyDoubts.Domain.Model;
 using AnyDoubts.Domain.Repository;
+using System;
 
 namespace AnyDoubts.Web.Controllers
 {
@@ -31,9 +32,16 @@ namespace AnyDoubts.Web.Controllers
         {
             User userProfile = Users.Load(user => user.Username == username);
 
-            Questions.Add(new Question(userProfile, question));
-            Questions.Commit();
-
+            if (String.IsNullOrEmpty(question))
+            {
+                ViewBag.UserName = "Pergunta Inválida!";
+            }
+            else
+            {
+                Questions.Add(new Question(userProfile, question));
+                Questions.Commit();
+            }           
+            
             return View(Questions.GetAll());
         }
     }

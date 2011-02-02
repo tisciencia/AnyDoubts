@@ -57,11 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Domain\QuestionTests.cs" />
+    <Compile Include="Domain\UserTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DAOFactoryTests.cs" />
     <Compile Include="Repository\FactoriesTests.cs" />
-    <Compile Include="Repository\QuestionRepositoryTests.cs" />
+    <Compile Include="Repository\QuestionDAOTests.cs" />
     <Compile Include="Repository\SessionManagerTests.cs" />
+    <Compile Include="Repository\UserDAOTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />

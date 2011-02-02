@@ -65,6 +65,11 @@
       <DependentUpon>Account.feature</DependentUpon>
     </Compile>
     <Compile Include="Account.steps.cs" />
+    <Compile Include="AskQuestionToAnyUser.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AskQuestionToAnyUser.feature</DependentUpon>
+    </Compile>
     <Compile Include="ListUsersQuestions.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -79,6 +84,10 @@
       <LastGenOutput>Account.feature.cs</LastGenOutput>
     </None>
     <None Include="App.config" />
+    <None Include="AskQuestionToAnyUser.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>AskQuestionToAnyUser.feature.cs</LastGenOutput>
+    </None>
     <None Include="ListUsersQuestions.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ListUsersQuestions.feature.cs</LastGenOutput>
