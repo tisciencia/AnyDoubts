@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Db4objects.Db4o;
-using AnyDoubts.Domain.Repositoy;
+using AnyDoubts.Domain.Repository;
 
 namespace AnyDoubts.DAO
 {

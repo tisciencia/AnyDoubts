@@ -5,18 +5,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Ask me anything</h2>
 
-
+@using (Html.BeginForm())
+{ 
+<p>    
+    @Html.TextArea("question")
+</p>
+<p>
+    <input type="submit" name="Send" id="send" value="Send" />
+</p>
+}
 @if (ViewBag.Message != null)
 { 
     <p>@ViewBag.Message</p>
 }
 else
 { 
-    <table>
-    <tr>
-        <th></th>
+<table>
+    <tr>        
         <th>
             Message
         </th>
@@ -31,11 +38,6 @@ else
 @foreach (var item in Model)
 {
     <tr>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
         <td>
             @item.Message
         </td>

@@ -9,7 +9,7 @@ using System.Threading;
 using System.Web;
 using Db4objects.Db4o;
 using Db4objects.Db4o.Linq;
-using AnyDoubts.Domain.Repositoy;
+using AnyDoubts.Domain.Repository;
 
 namespace AnyDoubts.DAO
 {

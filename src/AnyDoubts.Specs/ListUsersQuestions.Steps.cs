@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using AnyDoubts.DAO;
 using AnyDoubts.Domain.Model;
-using AnyDoubts.Domain.Repositoy;
+using AnyDoubts.Domain.Repository;
 using AnyDoubts.Web.Controllers;
 using Moq;
 using NUnit.Framework;
@@ -43,8 +43,9 @@ namespace AnyDoubts.Specs
         [Given(@"the user ""(.*)"" has no answered questions")]
         public void GivenTheUserVintemHasNoAnsweredQuestions(string username)
         {
-            _mock.Setup(q => q.FromUser(username)).Returns(new List<Question>());
-            _userController = new UserController(_mock.Object);
+            _mock.Setup(q => q.FromUser(username)).Returns(new List<Question>());            
+            _userController = new UserController();
+            _userController.Questions = _mock.Object;
         }
 
         [When(@"I visit ""(.*)""'s profile  page")]

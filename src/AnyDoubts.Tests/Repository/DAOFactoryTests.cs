@@ -5,7 +5,7 @@ using System.Text;
 using SharpTestsEx;
 using NUnit.Framework;
 using AnyDoubts.DAO;
-using AnyDoubts.Domain.Repositoy;
+using AnyDoubts.Domain.Repository;
 using AnyDoubts.Domain.Model;
 
 namespace AnyDoubts.Tests.Repository

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using AnyDoubts.Domain.Model;
 using NUnit.Framework;
-using AnyDoubts.Domain.Repositoy;
+using AnyDoubts.Domain.Repository;
 using AnyDoubts.DAO;
 using SharpTestsEx;
 
@@ -35,20 +35,17 @@ namespace AnyDoubts.Tests.Repository
         [Test]
         public void QuestionsRepository_FromUser_should_return_questions_answered_from_a_specific_user()
         {
-            _questionsRepository.Add(new Question("Question1")
-                                         {
-                                             UserId = 1,
+            User vintem = new User("vintem");
+            User outro = new User("outro");
+            _questionsRepository.Add(new Question(vintem, "Question1")
+                                         {                                             
                                              Answer = "Test"
                                          });
-            _questionsRepository.Add(new Question("Question2")
-            {
-                UserId = 2,
+            _questionsRepository.Add(new Question(outro, "Question2")
+            {               
                 Answer = "Test"
             });
-            _questionsRepository.Add(new Question("Question3")
-            {
-                UserId = 1
-            });
+            _questionsRepository.Add(new Question(vintem, "Question1"));
 
             var questions = _questionsRepository.FromUser("vintem");
             Assert.AreEqual(1, questions.Count);
