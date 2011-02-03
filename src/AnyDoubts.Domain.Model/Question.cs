@@ -10,7 +10,6 @@ namespace AnyDoubts.Domain.Model
         private string _message;
         private string _answer;
         public User To { get; set; }
-
         public string Message
         {
             get { return _message; }            
@@ -24,7 +23,7 @@ namespace AnyDoubts.Domain.Model
         {
             get { return !String.IsNullOrEmpty(_answer); }
         }
-
+        
         public int UserId { get; set; }
 
         private Question() { }

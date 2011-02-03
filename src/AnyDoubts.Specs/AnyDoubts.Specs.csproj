@@ -59,15 +59,25 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Account.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Account.steps.cs" />
     <Compile Include="ListUsersQuestions.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ListUsersQuestions.feature</DependentUpon>
     </Compile>
-    <Compile Include="ListUsersQuestions.Steps.cs" />
+    <Compile Include="ListUsersQuestions.steps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Account.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Account.feature.cs</LastGenOutput>
+    </None>
     <None Include="App.config" />
     <None Include="ListUsersQuestions.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

@@ -51,9 +51,7 @@
     <Compile Include="ContainerFactory.cs" />
     <Compile Include="DAOFactory.cs" />
     <Compile Include="DAOs\QuestionDAO.cs" />
-    <Compile Include="DAOs\UserRepository.cs" />
     <Compile Include="GenericDAO.cs" />
-    <Compile Include="ISessionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SessionManager.cs" />
     <Compile Include="SessionManagerFactory.cs" />
