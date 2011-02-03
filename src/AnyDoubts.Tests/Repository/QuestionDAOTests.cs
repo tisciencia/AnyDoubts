@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
-using AnyDoubts.DAO.DAOs;
 using AnyDoubts.Domain.Model;
 using NUnit.Framework;
-using AnyDoubts.Domain.Repositoy;
+using AnyDoubts.Domain.Repository;
 using AnyDoubts.DAO;
 using SharpTestsEx;
 
 namespace AnyDoubts.Tests.Repository
 {
     [TestFixture]
-    public class QuestionRepositoryTests
+    public class QuestionDAOTests
     {
         private IQuestions _questionsRepository;
 
@@ -36,38 +35,20 @@ namespace AnyDoubts.Tests.Repository
         [Test]
         public void QuestionsRepository_FromUser_should_return_questions_answered_from_a_specific_user()
         {
-            User user2;
-            User user1 = GetUsers(out user2);
-
-            _questionsRepository.Add(new Question("Question1")
-                                         {
-                                             To = user1,
+            User vintem = new User("vintem");
+            User outro = new User("outro");
+            _questionsRepository.Add(new Question(vintem, "Question1")
+                                         {                                             
                                              Answer = "Test"
                                          });
-            _questionsRepository.Add(new Question("Question2")
-            {
-                To = user2,
+            _questionsRepository.Add(new Question(outro, "Question2")
+            {               
                 Answer = "Test"
             });
-            _questionsRepository.Add(new Question("Question3")
-            {
-                To = user1
-            });
+            _questionsRepository.Add(new Question(vintem, "Question1"));
 
             var questions = _questionsRepository.FromUser("vintem");
             Assert.AreEqual(1, questions.Count);
-            Assert.AreEqual("Question1", questions[0].Message);
-        }
-
-        private static User GetUsers(out User user2)
-        {
-            var userRepository = new UserRepository();
-            var user1 = new User {Username = "vintem"};
-            user2 = new User {Username = "anyuser"};
-            userRepository.Add(user1);
-            userRepository.Add(user2);
-            userRepository.Commit();
-            return user1;
-        }
+        }      
     }
 }

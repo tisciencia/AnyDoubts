@@ -16,35 +16,71 @@ namespace AnyDoubts.Tests.Domain
         [Test]
         public void QuestionMessageShouldBeValid()
         {
-            Question question = new Question("Olá tudo bem?");
+            Question question = new Question(new User(), "Olá tudo bem?");
             question.Message.Should().Be("Olá tudo bem?");
         }
 
         [Test]
+        public void QuestionAnswerShouldBeAnswered()
+        {
+            Question question = new Question(new User(), "Olá tudo bem?");
+            question.Answer = "Sim, obrigado.";
+            
+            question.IsAnswered.Should().Be(true);
+        }
+
+        [Test]
+        public void QuestionAnswerShouldBeNotAnswered()
+        {
+            Question question = new Question(new User(), "Olá tudo bem?");
+            
+            question.IsAnswered.Should().Be(false);
+        }
+
+        [Test]
+        public void QuestionObjectShouldBeDiff()
+        {
+            Question question1 = new Question(new User(), "Olá tudo bem?");
+            Question question2 = new Question(new User(), "Olá tudo bem?");
+
+            question1.Equals(question2).Should().Be(false);
+        }
+        [Test]
         [ExpectedException("System.ArgumentException")]
         public void QuestionMessageShouldBeInvalidWhenEmpty()
         {
-            Question question = new Question("");      
+            Question question = new Question(new User(), "");            
+        }
+		
+		[Test]
+        [ExpectedException("System.ArgumentException")]
+        public void QuestionMessageShouldBeInvalidWhenToNull()
+        {
+            Question question = new Question(null, "Olá tudo bem?");            
         }
 
+		[Test]        
+        public void QuestionShouldBeToUserTiago()
+        {		
+			User tiago = new User("Tiago");
+            Question question = new Question(null, tiago, "Olá tudo bem?");
+			question.To.Should().Be(tiago);
+        }
+		
+		[Test]        
+        public void QuestionShouldBeFromUserVintemToAnyUser()
+        {		
+			User tiago = new User("Tiago");
+			User vintem = new User("Vintem");
+            Question question = new Question(vintem, tiago, "Olá tudo bem?");
+			question.From.Should().Be(vintem);
+        }
+		
         [Test]
         [ExpectedException("System.ArgumentException")]
         public void QuestionMessageShouldBeInvalidWhenNull()
         {
-            Question question = new Question(null);
-        }
-
-        [Test]        
-        public void QuestionMessageShouldBeValidWithMessage255()
-        {
-            char[] charArrayMaxLength = new char[MESSAGE_MAX_LENGTH];
-            for (int i = 0; i < MESSAGE_MAX_LENGTH; i++)
-                charArrayMaxLength[i] = '.';
-            
-            string messageMaxLength = new string(charArrayMaxLength);
-            Question question = new Question(messageMaxLength);
-
-            question.Message.Length.Should().Be(MESSAGE_MAX_LENGTH);
+            Question question = new Question(new User(), null);
         }
 
         [Test]
@@ -56,33 +92,37 @@ namespace AnyDoubts.Tests.Domain
                 charArrayOverMaxLength[i] = '.';
 
             string messageOverMaxLength = new string(charArrayOverMaxLength);
-            Question question = new Question(messageOverMaxLength);
+            Question question = new Question(new User(), messageOverMaxLength);
         }
 
         [Test]
-        public void QuestionAnswerShouldBeAnswered()
+        public void QuestionMessageShouldBeValidWithMessage255()
         {
-            Question question = new Question("Olá tudo bem?");
-            question.Answer = "Sim obrigado.";
-            
-            question.IsAnswered.Should().Be(true);
+            char[] charArrayMaxLength = new char[MESSAGE_MAX_LENGTH];
+            for (int i = 0; i < MESSAGE_MAX_LENGTH; i++)
+                charArrayMaxLength[i] = '.';
+
+            string messageMaxLength = new string(charArrayMaxLength);
+            Question question = new Question(new User(), messageMaxLength);
+
+            question.Message.Length.Should().Be(MESSAGE_MAX_LENGTH);
         }
-
-        [Test]
-        public void QuestionAnswerShouldBeNotAnswered()
-        {
-            Question question = new Question("Olá tudo bem?");
-            
-            question.IsAnswered.Should().Be(false);
+		
+		[Test]        
+        public void QuestionShouldBeAnonym()
+        {	
+			User tiago = new User("Tiago");
+            Question question = new Question(null, tiago, "Olá tudo bem?");
+			question.IsAnonym.Should().Be(true);
         }
-
-        [Test]
-        public void QuestionObjectShouldBeDiff()
-        {
-            Question question1 = new Question("Olá tudo bem?");
-            Question question2 = new Question("Olá tudo bem?");
-
-            question1.Equals(question2).Should().Be(false);
+		
+		[Test]        
+        public void QuestionShouldNotBeAnonym()
+        {	
+			User tiago = new User("Tiago");
+			User vintem = new User("Vintem");
+            Question question = new Question(vintem, tiago, "Olá tudo bem?");
+			question.IsAnonym.Should().Be(false);
         }
     }
 }

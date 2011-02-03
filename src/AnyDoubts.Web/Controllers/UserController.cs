@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 using AnyDoubts.DAO;
-using AnyDoubts.Domain.Repositoy;
 using Ninject;
+using AnyDoubts.Domain.Model;
+using AnyDoubts.Domain.Repository;
+using System;
 
 namespace AnyDoubts.Web.Controllers
 {
     public class UserController : Controller
     {
         [Inject]
-        IQuestions Questions { get; set; }        
+        public IQuestions Questions { get; set; }
+
+        [Inject]
+        public IUsers Users { get; set; }
 
         public UserController()
         {
-        }
-
-        public UserController(IQuestions questionsRepository)
-        {
-            Questions = questionsRepository;
         }
 
         public ActionResult Index(string username)
@@ -27,5 +27,24 @@ namespace AnyDoubts.Web.Controllers
             return View(questions);
         }
 
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Index(string username, string question)
+        {
+            User userProfile = Users.Load(user => user.Username == username);
+            if (userProfile == null)
+                return View(Questions.GetAll());
+
+            if (String.IsNullOrEmpty(question))
+            {
+                ViewBag.UserName = "Pergunta Inválida!";
+            }
+            else
+            {                
+                Questions.Add(new Question(userProfile, question));
+                Questions.Commit();
+            }           
+            
+            return View(Questions.GetAll());
+        }
     }
 }

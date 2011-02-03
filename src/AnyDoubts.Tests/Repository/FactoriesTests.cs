@@ -15,7 +15,7 @@ namespace AnyDoubts.Tests.Repository
         [Test]
         public void ContainerFactoryShouldReturnANewInstanceOfContainerFactory()
         {
-            ContainerFactory.CreateSession().OpenClient().Should().Not.Be(null);
+            ContainerFactory.GetInstance().Should().Not.Be(null);
         }
 
         [Test]

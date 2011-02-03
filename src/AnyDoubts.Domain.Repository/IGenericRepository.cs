@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Collections;
 
-namespace AnyDoubts.Domain.Repositoy
+namespace AnyDoubts.Domain.Repository
 {
     public interface IGenericRepository<T> : IRepository
     {

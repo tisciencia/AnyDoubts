@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AnyDoubts.Domain.Model;
-using AnyDoubts.Domain.Repositoy;
+using AnyDoubts.Domain.Repository;
 using AnyDoubts.DAO;
 using Ninject;
 
@@ -13,24 +13,23 @@ namespace AnyDoubts.Web.Controllers
     public class HomeController : Controller
     {
         [Inject]
-        IQuestions Questions { get; set; }
+        public IQuestions Questions { get; set; }
 
-        public HomeController(IQuestions questionsRepository)
+        public HomeController()
         {
-            Questions = questionsRepository;
         }
 
         public ActionResult Index()
         {            
-            ViewBag.Message = "Ask me anything";            
-            return View(Questions.GetAll());            
+            ViewBag.Message = "Ask me anything";
+            return View(Questions.GetAll());
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Index(string question)
         {
             ViewBag.Message = "Ask me anything";            
-            Questions.Add(new Question(question));
+            Questions.Add(new Question(new User(), question));
             Questions.Commit();
             return View(Questions.GetAll());            
         }

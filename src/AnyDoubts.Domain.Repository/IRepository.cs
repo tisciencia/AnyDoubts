@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AnyDoubts.Domain.Repositoy
+namespace AnyDoubts.Domain.Repository
 {
     public interface IRepository
     {

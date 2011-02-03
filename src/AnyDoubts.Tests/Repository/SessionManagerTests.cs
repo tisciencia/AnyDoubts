@@ -6,7 +6,7 @@ using NUnit.Framework;
 using AnyDoubts.DAO;
 using Db4objects.Db4o;
 using SharpTestsEx;
-using AnyDoubts.Domain.Repositoy;
+using AnyDoubts.Domain.Repository;
 
 namespace AnyDoubts.Tests.Repository
 {

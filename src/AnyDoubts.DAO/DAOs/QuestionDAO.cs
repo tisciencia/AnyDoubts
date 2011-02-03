@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
-using AnyDoubts.Domain.Repositoy;
+using AnyDoubts.Domain.Repository;
 using AnyDoubts.Domain.Model;
 
 namespace AnyDoubts.DAO
@@ -9,7 +9,7 @@ namespace AnyDoubts.DAO
     {
         public IList<Question> FromUser(string username)
         {
-            return GetQuery().Where(c => c.IsAnswered && c.To.Username.Equals(username)).ToList();
+            return GetQuery().Where(c => c.IsAnswered && c.To.Username == username).ToList();
         }
     }
 }

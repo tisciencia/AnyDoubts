@@ -5,17 +5,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Ask me anything</h2>
 
-
+@using (Html.BeginForm())
+{ 
+<p>    
+    @Html.TextArea("question")
+</p>
+<p>
+    <input type="submit" name="Send" id="send" value="Send" />
+</p>
+}
 @if (ViewBag.Message != null)
 { 
     <p>@ViewBag.Message</p>
 }
 else
 { 
-    <table>
-    <tr>
+<table>
+    <tr>       
         <th>
             Message
         </th>
