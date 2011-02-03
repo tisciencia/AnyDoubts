@@ -13,7 +13,7 @@ namespace AnyDoubts.Web.Controllers
     public class HomeController : Controller
     {
         [Inject]
-        IQuestions Questions { get; set; }
+        public IQuestions Questions { get; set; }
 
         public HomeController()
         {

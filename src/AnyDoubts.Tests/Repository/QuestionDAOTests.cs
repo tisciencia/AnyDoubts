@@ -49,7 +49,6 @@ namespace AnyDoubts.Tests.Repository
 
             var questions = _questionsRepository.FromUser("vintem");
             Assert.AreEqual(1, questions.Count);
-        }
-
+        }      
     }
 }

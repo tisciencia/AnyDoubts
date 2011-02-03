@@ -11,11 +11,10 @@ namespace AnyDoubts.DAO
 {
     public static class ContainerFactory
     {
-        private static IObjectServer _server;
-
-        public static IObjectServer CreateSession()
-        {
-            if (_server == null)
+        private static IObjectContainer _instance;
+        public static IObjectContainer GetInstance()
+        {            
+            if (_instance == null)
             {
                 string dbPath = System.Configuration.ConfigurationManager.ConnectionStrings["ObjectStore"].ConnectionString;
 
@@ -25,11 +24,11 @@ namespace AnyDoubts.DAO
                     string appDir = HttpContext.Current.Server.MapPath("~/App_Data/");
                     dbPath = Path.Combine(appDir, dbPath);
                 }
-                                
-                _server = Db4oFactory.OpenServer(dbPath, 0);
+
+                _instance = Db4oFactory.OpenFile(Db4oFactory.NewConfiguration(), dbPath);
             }
 
-            return _server;
+            return _instance;
         }
     }
 }

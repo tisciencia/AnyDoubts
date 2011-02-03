@@ -24,8 +24,6 @@ namespace AnyDoubts.Domain.Model
             get { return (From == null); }
         }
 			
-		private Question() { }
-		
 		public Question(User from, User to, string message)
 		{
 			if (to == null)
@@ -48,10 +46,10 @@ namespace AnyDoubts.Domain.Model
         {
             return (!(String.IsNullOrEmpty(message)) && (message.Trim().Length <= MESSAGE_MAX_LENGTH));
         }
-			
-		public override int GetHashCode()
-		{            
-			return ID.GetHashCode();
-		}
+
+        public override int GetHashCode()
+        {
+            return ID.GetHashCode();
+        }
 	}
 }

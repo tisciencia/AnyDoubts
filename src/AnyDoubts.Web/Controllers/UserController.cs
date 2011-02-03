@@ -31,13 +31,15 @@ namespace AnyDoubts.Web.Controllers
         public ActionResult Index(string username, string question)
         {
             User userProfile = Users.Load(user => user.Username == username);
+            if (userProfile == null)
+                return View(Questions.GetAll());
 
             if (String.IsNullOrEmpty(question))
             {
                 ViewBag.UserName = "Pergunta Inválida!";
             }
             else
-            {
+            {                
                 Questions.Add(new Question(userProfile, question));
                 Questions.Commit();
             }           

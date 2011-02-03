@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="IGenericRepository.cs" />
     <Compile Include="ISessionManager.cs" />
+    <Compile Include="Repositories\IAccount.cs" />
     <Compile Include="Repositories\IQuestions.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

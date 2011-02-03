@@ -13,7 +13,7 @@ namespace AnyDoubts.DAO
 
         public SessionManager()
         {
-            _Db4oManager = ContainerFactory.CreateSession().OpenClient();
+            _Db4oManager = ContainerFactory.GetInstance();
         }
 
         public bool IsClosed()
