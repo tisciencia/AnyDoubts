@@ -50,7 +50,6 @@
   <ItemGroup>
     <Compile Include="ContainerFactory.cs" />
     <Compile Include="DAOFactory.cs" />
-    <Compile Include="DAOs\AccountDAO.cs" />
     <Compile Include="DAOs\QuestionDAO.cs" />
     <Compile Include="DAOs\UserDAO.cs" />
     <Compile Include="GenericDAO.cs" />

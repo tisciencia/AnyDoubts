@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using AnyDoubts.DAO.DAOs;
+using AnyDoubts.DAO;
 using AnyDoubts.Domain.Model;
 using AnyDoubts.Domain.Repository;
 using AnyDoubts.Web.Controllers;
@@ -16,14 +16,14 @@ namespace AnyDoubts.Specs
     {
         private readonly Mock<IQuestions> _mock;
         private User _currentUser;
-        private readonly UserController _userController;
+        private UserController _userController;
         private ActionResult _result;
         private List<Question> _expectedQuestions;
 
         public ListUsersQuestions()
         {
             _mock = new Mock<IQuestions>();
-            _userController = new UserController(_mock.Object);
+            _userController = new UserController {Questions = _mock.Object};
         }
 
         [Given(@"I am a visitor")]
@@ -35,7 +35,7 @@ namespace AnyDoubts.Specs
         public void GivenThereIsAUserCalledVintem(string username)
         {
             _currentUser = new User(username);
-            var userRepository = new UserRepository();
+            var userRepository = new UserDAO();
             userRepository.Add(_currentUser);
             userRepository.Commit();
         }
@@ -44,8 +44,7 @@ namespace AnyDoubts.Specs
         public void GivenTheUserVintemHasNoAnsweredQuestions(string username)
         {
             _mock.Setup(q => q.FromUser(username)).Returns(new List<Question>());            
-            _userController = new UserController();
-            _userController.Questions = _mock.Object;
+            _userController = new UserController {Questions = _mock.Object};
         }
 
         [When(@"I visit ""(.*)""'s profile page")]
@@ -67,7 +66,7 @@ namespace AnyDoubts.Specs
             _expectedQuestions = new List<Question>();
             foreach (var row in table.Rows)
             {
-                var question = new Question(row["Question"]) { Answer = row["Answer"], To = _currentUser };
+                var question = new Question(_currentUser, row["Question"]) { Answer = row["Answer"]};
                 _expectedQuestions.Add(question);
             }
             _mock.Setup(x => x.FromUser(It.IsAny<string>())).Returns(_expectedQuestions);
