@@ -23,12 +23,13 @@ namespace AnyDoubts.Web
 
             routes.MapRoute("user", "{username}", new {controller = "User", action = "Index"});
 
+            //routes.MapRoute("NotFound", "{*path}", new { controller = "Error", action = "NotFound" });
+
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
-
+            );            
         }
 
         protected void Application_Start()
@@ -37,6 +38,8 @@ namespace AnyDoubts.Web
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            //RouteDebug.RouteDebugger.RewriteRoutesForTesting(RouteTable.Routes);
         }
     }
 }

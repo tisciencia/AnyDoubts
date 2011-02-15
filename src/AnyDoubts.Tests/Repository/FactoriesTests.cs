@@ -6,6 +6,8 @@ using NUnit.Framework;
 using AnyDoubts.DAO;
 using Db4objects.Db4o;
 using SharpTestsEx;
+using AnyDoubts.Domain.Repository;
+using AnyDoubts.Domain.Model;
 
 namespace AnyDoubts.Tests.Repository
 {
@@ -22,6 +24,19 @@ namespace AnyDoubts.Tests.Repository
         public void SessionManagerFactoryShouldReturnANewInstanceOfSessionManager()
         {
             SessionManagerFactory.GetInstance().Should().Not.Be(null);
+        }
+
+        [Test]
+        public void DAOFactoryShouldCreateANewInstanceOfIQuestion()
+        {
+            IList<Question> questions = DAOFactory.Get<IQuestions>().GetAll();
+            DAOFactory.Get<IQuestions>().Should().Not.Be(null);
+        }
+
+        [Test]
+        public void SessionManagerShouldBeOpen()
+        {
+            SessionManagerFactory.GetInstance().IsClosed().Should().Be(false);
         }
     }
 }

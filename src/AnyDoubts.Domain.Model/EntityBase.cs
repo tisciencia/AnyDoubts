@@ -13,12 +13,7 @@ namespace AnyDoubts.Domain.Model
         {
             EntityBase compareTo = obj as EntityBase;
 
-            return ((compareTo != null) && HasSameBusinessSignatureAs(compareTo));
-        }
-
-        private bool HasSameBusinessSignatureAs(EntityBase compareTo)
-        {
-            return GetHashCode().Equals(compareTo.GetHashCode());
+            return ((compareTo != null) && this.GetHashCode().Equals(compareTo.GetHashCode()));
         }
     }
 }

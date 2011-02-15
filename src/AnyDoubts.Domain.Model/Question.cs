@@ -16,7 +16,7 @@ namespace AnyDoubts.Domain.Model
 			get { return !String.IsNullOrEmpty(Answer); }
 		}
 
-        public bool IsAnonym
+        public bool IsAnonymous
         {
             get { return (From == null); }
         }

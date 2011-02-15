@@ -113,7 +113,7 @@ namespace AnyDoubts.Tests.Domain
         {	
 			User tiago = new User("Tiago");
             Question question = new Question(null, tiago, "Olá tudo bem?");
-			question.IsAnonym.Should().Be(true);
+			question.IsAnonymous.Should().Be(true);
         }
 		
 		[Test]        
@@ -122,7 +122,7 @@ namespace AnyDoubts.Tests.Domain
 			User tiago = new User("Tiago");
 			User vintem = new User("Vintem");
             Question question = new Question(vintem, tiago, "Olá tudo bem?");
-			question.IsAnonym.Should().Be(false);
+			question.IsAnonymous.Should().Be(false);
         }
     }
 }

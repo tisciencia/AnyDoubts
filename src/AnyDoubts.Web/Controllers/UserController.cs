@@ -3,6 +3,7 @@ using Ninject;
 using AnyDoubts.Domain.Model;
 using AnyDoubts.Domain.Repository;
 using System;
+using System.Net;
 
 namespace AnyDoubts.Web.Controllers
 {
@@ -31,7 +32,7 @@ namespace AnyDoubts.Web.Controllers
         {
             User userProfile = Users.Load(user => user.Username == username);
             if (userProfile == null)
-                return View(Questions.GetAll());
+                return HttpNotFound();                
 
             if (String.IsNullOrEmpty(question))
             {
@@ -44,6 +45,6 @@ namespace AnyDoubts.Web.Controllers
             }           
             
             return View(Questions.GetAll());
-        }
+        }        
     }
 }
