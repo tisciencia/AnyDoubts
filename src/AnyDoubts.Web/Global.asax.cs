@@ -23,8 +23,6 @@ namespace AnyDoubts.Web
 
             routes.MapRoute("user", "{username}", new {controller = "User", action = "Index"});
 
-            //routes.MapRoute("NotFound", "{*path}", new { controller = "Error", action = "NotFound" });
-
             routes.MapRoute(
                 "Default", // Route name
                 "{controller}/{action}/{id}", // URL with parameters

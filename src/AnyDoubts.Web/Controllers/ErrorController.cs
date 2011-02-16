@@ -8,19 +8,17 @@ using System.Net;
 namespace AnyDoubts.Web.Controllers
 {
     public class ErrorController : Controller
-    {
-        [AcceptVerbs(HttpVerbs.Get)]
+    {        
         public ViewResult Unknown()
         {
             Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             return View("Unknown");
         }
-
-        [AcceptVerbs(HttpVerbs.Get)]
-        public ViewResult NotFound(string path)
+        
+        public ViewResult NotFound()
         {
             Response.StatusCode = (int)HttpStatusCode.NotFound;
-            return View("NotFound", path);
+            return View("NotFound");
         }
     }
 }

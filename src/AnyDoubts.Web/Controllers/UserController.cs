@@ -32,7 +32,7 @@ namespace AnyDoubts.Web.Controllers
         {
             User userProfile = Users.Load(user => user.Username == username);
             if (userProfile == null)
-                return HttpNotFound();                
+                return View("Error");
 
             if (String.IsNullOrEmpty(question))
             {
