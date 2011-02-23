@@ -1,0 +1,31 @@
+﻿@model IEnumerable<AnyDoubts.Domain.Model.Question>
+@if (ViewBag.Message != null)
+{ 
+    <p>@ViewBag.Message</p>
+}
+else
+{
+    <div>
+        <table>
+            <tr>
+                <th>
+                    Message
+                </th>
+                <th>
+                    Answer
+                </th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Message
+                    </td>
+                    <td>
+                        @item.Answer
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+}

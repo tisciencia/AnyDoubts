@@ -1,0 +1,13 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <li>@Html.ActionLink("Perguntas", "InBox", "Account")</li>    
+    <li>@Html.ActionLink("Perfil", "Index", "User", new { username = @Context.User.Identity.Name }, null)</li>
+}
+else
+{
+    <li>@Html.ActionLink("Principal", "Index", "Home")</li>
+    <li>@Html.ActionLink("Kanban", "Kanban", "Home")</li>
+    <li>@Html.ActionLink("Sobre", "Sobre", "Home")</li>
+    <li>@Html.ActionLink("Colaboradores", "Colaboradores", "Home")</li>
+}
+
