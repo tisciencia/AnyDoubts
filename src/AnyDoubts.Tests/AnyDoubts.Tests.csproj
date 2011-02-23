@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.1.1.0.118\lib\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Db4objects.Db4o, Version=7.4.155.14653, Culture=neutral, PublicKeyToken=6199cd4f203aa8eb, processorArchitecture=MSIL">
       <HintPath>..\..\lib\Db4o\Db4objects.Db4o.dll</HintPath>
     </Reference>
@@ -63,6 +66,7 @@
     <Compile Include="Repository\FactoriesTests.cs" />
     <Compile Include="Repository\QuestionDAOTests.cs" />
     <Compile Include="Repository\UserDAOTests.cs" />
+    <Compile Include="Web\AutoMapperConfigurationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
