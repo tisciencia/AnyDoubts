@@ -2,5 +2,33 @@
     ViewBag.Title = "InBox";
 }
 
-<h2>Questions</h2>
+<h2>Perguntas</h2>
 
+@if (ViewBag.Message != null)
+{ 
+    <p>@ViewBag.Message</p>
+}
+else
+{ 
+<table>
+    <tr>       
+        <th>
+            Pergunta
+        </th>
+        <th>
+            Resposta
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Message
+            </td>
+            <td>
+                @item.Answer
+            </td>
+        </tr>
+    }
+</table>   
+}

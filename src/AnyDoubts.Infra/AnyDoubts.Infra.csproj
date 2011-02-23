@@ -41,7 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleMail\Email\Email.cs" />
+    <Compile Include="SimpleMail\Email\EmailBuilder.cs" />
+    <Compile Include="SimpleMail\Email\EmailMessage.cs" />
+    <Compile Include="SimpleMail\Transport\EmailTransportConfiguration.cs" />
+    <Compile Include="SimpleMail\Transport\PostalService.cs" />
+    <Compile Include="SimpleMail\Validation\EmailAddressValidator.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

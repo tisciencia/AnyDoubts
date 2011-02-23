@@ -10,17 +10,14 @@
         <div id="header">
             <div id="title">
                 <h1>
-                    Projeto - AnyDoubts</h1>
+                    AnyDoubts (Alpha)</h1>
             </div>
             <div id="logindisplay">
-                @Html.Partial("_SignOut")
+                @Html.Partial("_Sign")
             </div>
-            <div id="menucontainer">
-                <ul id="menu">
-                    <li>@Html.ActionLink("Principal", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Kanban", "Kanban", "Home")</li>
-                    <li>@Html.ActionLink("Sobre", "Sobre", "Home")</li>
-                    <li>@Html.ActionLink("Colaboradores", "Colaboradores", "Home")</li>
+            <div class="menucontainer">
+                <ul class="menu">
+                    @Html.Partial("_Menu")
                 </ul>
             </div>
         </div>

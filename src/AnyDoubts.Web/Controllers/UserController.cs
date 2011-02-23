@@ -22,7 +22,7 @@ namespace AnyDoubts.Web.Controllers
         public ActionResult Index(string username)
         {
             ViewBag.UserName = username;
-            var questions = Questions.FromUser(username);
+            var questions = Questions.ToUser(username);
             if (questions.Count == 0) ViewBag.Message = "The user has not answered any questions";
             return View(questions);
         }
@@ -39,12 +39,21 @@ namespace AnyDoubts.Web.Controllers
                 ViewBag.UserName = "Pergunta Inválida!";
             }
             else
-            {                
-                Questions.Add(new Question(userProfile, question));
+            {
+                Question newQuestion;
+                if (Request.IsAuthenticated)
+                {
+                    User userFrom = Users.Load(user => user.Username == User.Identity.Name);
+                    newQuestion = new Question(userFrom, userProfile, question);
+                }
+                else
+                    newQuestion = new Question(userProfile, question);
+
+                Questions.Add(newQuestion);
                 Questions.Commit();
-            }           
-            
+            }
+
             return View(Questions.GetAll());
-        }        
+        }
     }
 }

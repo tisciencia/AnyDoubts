@@ -1,12 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace AnyDoubts.Domain.Model
 {
     public class Question : EntityBase
     {
         private const int MESSAGE_MAX_LENGTH = 255;
-		public Guid ID { get; private set; }
-		public string Message { get; private set; }
+		public Guid ID { get; private set; }   
+        public string Message { get; private set; }
 		public string Answer { get; set; }
 		public User From { get; private set; }
         public User To { get; private set; }

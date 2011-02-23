@@ -5,6 +5,7 @@ namespace AnyDoubts.Domain.Repository
 {
     public interface IQuestions : IGenericRepository<Question>
     {
-        IList<Question> FromUser(string username);
+        IList<Question> ToUser(string username);
+        IList<Question> Unanswered(string username);        
     }
 }

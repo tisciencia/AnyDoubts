@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Domain\QuestionTests.cs" />
     <Compile Include="Domain\UserTests.cs" />
+    <Compile Include="Infra\SimpleMailTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\FactoriesTests.cs" />
     <Compile Include="Repository\QuestionDAOTests.cs" />

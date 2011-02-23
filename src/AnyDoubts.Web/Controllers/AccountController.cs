@@ -4,10 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AnyDoubts.Domain.Model;
-using AnyDoubts.Web.Models;
+using AnyDoubts.Web.Services;
 using System.Web.Routing;
 using AnyDoubts.Domain.Repository;
 using Ninject;
+using System.Web.Security;
+using AnyDoubts.Web.ViewModels;
 
 namespace AnyDoubts.Web.Controllers
 {
@@ -15,6 +17,8 @@ namespace AnyDoubts.Web.Controllers
     {
         [Inject]
         public IUsers Users { get; set; }
+        [Inject]
+        public IQuestions Questions { get; set; }
         public IFormsAuthenticationService FormsService { get; set; }
 
         protected override void Initialize(RequestContext requestContext)
@@ -30,7 +34,7 @@ namespace AnyDoubts.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult SignUp(UserSingUp model)
+        public ActionResult SignUp(UserSignUp model)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +90,10 @@ namespace AnyDoubts.Web.Controllers
         [Authorize]
         public ActionResult InBox()
         {
-            return View();
+            ViewBag.UserName = User.Identity.Name;
+            var questions = Questions.Unanswered(User.Identity.Name);
+            if (questions.Count == 0) ViewBag.Message = "The user has not questions";
+            return View(questions);            
         }
 
         public ActionResult RetrieveUsername()
@@ -107,6 +114,11 @@ namespace AnyDoubts.Web.Controllers
 
         [HttpPost]
         public ActionResult ResetPassword(string username)
+        {
+            return View();
+        }
+
+        public ActionResult Settings()
         {
             return View();
         }

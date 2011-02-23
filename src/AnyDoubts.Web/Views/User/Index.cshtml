@@ -1,49 +1,26 @@
-﻿@model IEnumerable<AnyDoubts.Domain.Model.Question>
-
+﻿@model AnyDoubts.Web.ViewModels.Profile
 @{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Index";    
 }
-
-<h2>Ask me anything</h2>
-
+<h2>
+    Ask me anything</h2>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
 @using (Html.BeginForm())
-{ 
-<p>    
-    @Html.TextArea("question")
-</p>
-<p>
-    <input type="submit" name="Send" id="send" value="Send" />
-</p>
-}
-@if (ViewBag.Message != null)
-{ 
-    <p>@ViewBag.Message</p>
-}
-else
-{ 
-<table>
-    <tr>       
-        <th>
-            Message
-        </th>
-        <th>
-            Answer
-        </th>
-    </tr>
-
-@foreach (var item in Model)
 {
-    <tr>
-        <td>
-            @item.Message
-        </td>
-        <td>
-            @item.Answer
-        </td>
-    </tr>
+    @Html.ValidationSummary(true, "A criação da conta não foi bem sucedida. Por favor, corrija os erros e tente novamente.")
+    <div>
+        <div class="editor-label">
+            Pergunte-me o que quiser
+        </div>
+        <div class="editor-field">
+            <textarea id="question"></textarea>
+        </div>
+        <p>
+            <input type="submit" value="Enviar" />
+        </p>
+    </div>
 }
-
-</table>   
-}
-
+<div>
+    @Html.Partial("_Questions")
+</div>

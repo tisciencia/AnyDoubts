@@ -1,20 +1,21 @@
-﻿@model AnyDoubts.Domain.Model.UserSignIn
+﻿@model AnyDoubts.Web.ViewModels.UserSignIn
 @{
     ViewBag.Title = "SignIn";
 }
-<h2>
-    SignIn</h2>
+<script src="@Url.Content("~/Scripts/jquery.watermark.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<h2>
+    SignIn</h2>
 @using (Html.BeginForm())
 {
-    @Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.")
+    @Html.ValidationSummary(true, "A criação da conta não foi bem sucedida. Por favor, corrija os erros e tente novamente.")
     <div>
         <fieldset>
-            <legend><b>LogIn to AnyDoubts</b></legend>
+            <legend><b>Logar no AnyDoubts</b></legend>
             <br />
             <div>
-                <i>Not a AnyDoubts user yet? @Html.ActionLink("Click here to sign up.", "SignUp", "Account")</i>
+                <i>Não é um usuário do AnyDoubts ainda? @Html.ActionLink("Clique aqui para se cadastrar.", "SignUp", "Account")</i>
             </div>
             <div class="editor-label">
                 @Html.LabelFor(m => m.Username)
@@ -23,7 +24,7 @@
                 @Html.TextBoxFor(m => m.Username)
                 @Html.ValidationMessageFor(m => m.Username)
             </div>
-            <i>@Html.ActionLink("Forgot your username?", "RetrieveUsername", "Account")</i>
+            <i>@Html.ActionLink("Esqueceu o seu nome de usuário?", "RetrieveUsername", "Account")</i>
             <div class="editor-label">
                 @Html.LabelFor(m => m.Password)
             </div>
@@ -31,9 +32,9 @@
                 @Html.PasswordFor(m => m.Password)
                 @Html.ValidationMessageFor(m => m.Password)
             </div>
-            <i>@Html.ActionLink("Forgot your password?", "ResetPassword", "Account")</i>
+            <i>@Html.ActionLink("Esqueceu a sua senha?", "ResetPassword", "Account")</i>
             <p>
-                <input type="submit" value="Continue" />
+                <input type="submit" value="Continuar" />
             </p>
         </fieldset>
     </div>
