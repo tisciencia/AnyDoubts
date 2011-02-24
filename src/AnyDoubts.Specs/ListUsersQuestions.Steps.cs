@@ -43,7 +43,7 @@ namespace AnyDoubts.Specs
         [Given(@"the user ""(.*)"" has no answered questions")]
         public void GivenTheUserVintemHasNoAnsweredQuestions(string username)
         {
-            _mock.Setup(q => q.ToUser(username)).Returns(new List<Question>());            
+            _mock.Setup(q => q.AllAnsweredByUser(username)).Returns(new List<Question>());            
             _userController = new UserController {Questions = _mock.Object};
         }
 
@@ -69,7 +69,7 @@ namespace AnyDoubts.Specs
                 var question = new Question(_currentUser, row["Question"]) { Answer = row["Answer"]};
                 _expectedQuestions.Add(question);
             }
-            _mock.Setup(x => x.ToUser(It.IsAny<string>())).Returns(_expectedQuestions);
+            _mock.Setup(x => x.AllAnsweredByUser(It.IsAny<string>())).Returns(_expectedQuestions);
         }
 
         [Then(@"I should see")]

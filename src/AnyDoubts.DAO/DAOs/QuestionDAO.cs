@@ -7,7 +7,7 @@ namespace AnyDoubts.DAO
 {
     public class QuestionDAO : GenericDAO<Question>, IQuestions
     {
-        public IList<Question> ToUser(string username)
+        public IList<Question> AllAnsweredByUser(string username)
         {
             return GetQuery().Where(c => c.IsAnswered && c.To.Username == username).ToList();
         }

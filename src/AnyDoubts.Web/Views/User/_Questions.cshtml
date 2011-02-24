@@ -1,9 +1,5 @@
-﻿@model IEnumerable<AnyDoubts.Domain.Model.Question>
-@if (ViewBag.Message != null)
-{ 
-    <p>@ViewBag.Message</p>
-}
-else
+﻿<p>@ViewBag.Message</p>
+@if (Model.Questions != null && Model.Questions.Count > 0)
 {
     <div>
         <table>
@@ -15,10 +11,10 @@ else
                     Answer
                 </th>
             </tr>
-            @foreach (var item in Model)
+            @foreach (var item in Model.Questions)
             {
                 <tr>
-                    <td>
+                    <td>                    
                         @item.Message
                     </td>
                     <td>

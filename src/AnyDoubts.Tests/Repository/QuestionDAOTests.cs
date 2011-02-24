@@ -27,7 +27,7 @@ namespace AnyDoubts.Tests.Repository
         [Test]
         public void QuestionsRepository_FromUser_should_be_empty_if_theres_no_question_answered()
         {
-            var questions = _questionsRepository.ToUser("vintem");
+            var questions = _questionsRepository.AllAnsweredByUser("vintem");
             Assert.NotNull(questions);
             Assert.IsInstanceOf(typeof(IList<Question>), questions);
         }
@@ -47,7 +47,7 @@ namespace AnyDoubts.Tests.Repository
             });
             _questionsRepository.Add(new Question(vintem, "Question1"));
 
-            var questions = _questionsRepository.ToUser("vintem");
+            var questions = _questionsRepository.AllAnsweredByUser("vintem");
             Assert.AreEqual(1, questions.Count);
         }      
     }

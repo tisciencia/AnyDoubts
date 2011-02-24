@@ -1,4 +1,4 @@
-﻿@model AnyDoubts.Web.ViewModels.Profile
+﻿@model AnyDoubts.Web.ViewModels.UserProfile
 @{
     ViewBag.Title = "Index";    
 }
@@ -11,10 +11,10 @@
     @Html.ValidationSummary(true, "A criação da conta não foi bem sucedida. Por favor, corrija os erros e tente novamente.")
     <div>
         <div class="editor-label">
-            Pergunte-me o que quiser
+            @Html.LabelFor(m => m.NewQuestion)
         </div>
         <div class="editor-field">
-            <textarea id="question"></textarea>
+            @Html.TextBoxFor(m => m.NewQuestion)
         </div>
         <p>
             <input type="submit" value="Enviar" />

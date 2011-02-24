@@ -10,6 +10,7 @@ using AnyDoubts.Domain.Repository;
 using Ninject;
 using System.Web.Security;
 using AnyDoubts.Web.ViewModels;
+using AutoMapper;
 
 namespace AnyDoubts.Web.Controllers
 {
@@ -35,13 +36,14 @@ namespace AnyDoubts.Web.Controllers
 
         [HttpPost]
         public ActionResult SignUp(UserSignUp model)
-        {
+        {            
             if (ModelState.IsValid)
             {
                 User user = Users.Load(u => u.Username == model.Username);
                 if (!Users.IsStored(user))
                 {
-                    User newUser = new Domain.Model.User(model.Username, model.Email, model.Password);
+                    //User newUser = new Domain.Model.User(model.Username, model.Email, model.Password);
+                    var newUser = Mapper.Map<UserSignUp, User>(model);
                     Users.Add(newUser);
                     Users.Commit();
                     FormsService.SignIn(newUser.Username, false);
