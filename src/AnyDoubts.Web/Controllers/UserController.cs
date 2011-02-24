@@ -1,10 +1,10 @@
 ﻿using System.Web.Mvc;
+using AnyDoubts.Web.Filters;
 using Ninject;
 using AnyDoubts.Domain.Model;
 using AnyDoubts.Domain.Repository;
-using System;
-using System.Net;
 using AnyDoubts.Web.ViewModels;
+using Resources;
 
 namespace AnyDoubts.Web.Controllers
 {
@@ -16,24 +16,18 @@ namespace AnyDoubts.Web.Controllers
         [Inject]
         public IUsers Users { get; set; }
 
-        public UserController()
-        {
-        }
-
-        public ActionResult Index(string username)
+        [UserRequired]
+        public ViewResult Index(string username)
         {
             ViewBag.UserName = username;
-            var questions = Questions.AllAnsweredByUser(username);
-            if (questions.Count == 0) ViewBag.Message = "O usuário ainda não respondeu nenhuma pergunta.";
-            return View(new UserProfile() { Questions = questions });
+            return ListUsersQuestions(username);
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Index(string username, UserProfile profile)
+        [UserRequired]
+        public ViewResult Index(string username, UserProfile profile)
         {
-            User userProfile = Users.Load(user => user.Username == username);
-            if (userProfile == null)
-                return View("Error");
+            var userProfile = Users.Load(user => user.Username == username);
 
             if (ModelState.IsValid)
             {                
@@ -50,8 +44,15 @@ namespace AnyDoubts.Web.Controllers
                 Questions.Commit();
             }
 
-            ViewBag.Message = "Pergunta enviada com sucesso!";
-            return View(new UserProfile() { Questions = Questions.AllAnsweredByUser(username) });
+            ViewBag.Message = Messages.QuestionPostedWithSuccess;
+            return ListUsersQuestions(username);
+        }
+
+        private ViewResult ListUsersQuestions(string username)
+        {
+            var questions = Questions.AllAnsweredByUser(username);
+            if (questions.Count == 0) ViewBag.Message = Messages.NoQuestionsAnswered;
+            return View("Index", new UserProfile { Questions = questions });
         }
     }
 }

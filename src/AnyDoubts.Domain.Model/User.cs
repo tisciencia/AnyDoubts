@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace AnyDoubts.Domain.Model
+﻿namespace AnyDoubts.Domain.Model
 {
     public class User : EntityBase
     {
@@ -29,6 +24,11 @@ namespace AnyDoubts.Domain.Model
         public override string ToString()
         {
             return string.Format("{0}", Username);
-        }       
+        }
+
+        public static bool Exists(string username)
+        {
+            return false;
+        }
     }   
 }

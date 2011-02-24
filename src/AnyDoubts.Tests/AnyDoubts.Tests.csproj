@@ -40,6 +40,9 @@
     <Reference Include="Db4objects.Db4o.Linq, Version=7.4.155.14653, Culture=neutral, PublicKeyToken=6199cd4f203aa8eb, processorArchitecture=MSIL">
       <HintPath>..\..\lib\Db4o\Db4objects.Db4o.Linq.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.5.5.10112, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\nunit.framework.dll</HintPath>
@@ -49,6 +52,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\UserControllerTests.cs" />
     <Compile Include="Domain\QuestionTests.cs" />
     <Compile Include="Domain\UserTests.cs" />
     <Compile Include="Infra\SimpleMailTests.cs" />
@@ -67,10 +73,9 @@
     <Compile Include="Repository\QuestionDAOTests.cs" />
     <Compile Include="Repository\UserDAOTests.cs" />
     <Compile Include="Web\AutoMapperConfigurationTests.cs" />
+    <Compile Include="Web\RoutesTests.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controller\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\AnyDoubts.DAO\AnyDoubts.DAO.csproj">
       <Project>{01DE759A-A0B9-4487-AB10-4B38A4DA185D}</Project>
@@ -95,6 +100,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
