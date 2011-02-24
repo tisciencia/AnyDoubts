@@ -25,7 +25,7 @@ namespace AnyDoubts.Web.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         [UserRequired]
-        public ViewResult Index(string username, UserProfile profile)
+        public ActionResult Index(string username, UserProfile profile)
         {
             var userProfile = Users.Load(user => user.Username == username);
 
@@ -44,14 +44,14 @@ namespace AnyDoubts.Web.Controllers
                 Questions.Commit();
             }
 
-            ViewBag.Message = Messages.QuestionPostedWithSuccess;
-            return ListUsersQuestions(username);
+            TempData["mensagem"] = Messages.QuestionPostedWithSuccess;                        
+            return RedirectToAction("Index");
         }
 
         private ViewResult ListUsersQuestions(string username)
         {
             var questions = Questions.AllAnsweredByUser(username);
-            if (questions.Count == 0) ViewBag.Message = Messages.NoQuestionsAnswered;
+            if (questions.Count == 0) ViewBag.DataMessage = Messages.NoQuestionsAnswered;
             return View("Index", new UserProfile { Questions = questions });
         }
     }

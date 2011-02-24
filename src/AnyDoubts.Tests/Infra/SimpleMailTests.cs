@@ -10,7 +10,7 @@ namespace AnyDoubts.Tests.Infra
     public class SimpleMailTests
     {
         string[] yourAddress = new string[] { "tisciencia@gmail.com" };
-        
+
         //EmailTransportConfiguration.configure("smtp.server.com", true, false, "username", "password");
 
         //EmailMessage mail = new EmailMessage()

@@ -10,17 +10,19 @@
 {
     @Html.ValidationSummary(true, "A criação da conta não foi bem sucedida. Por favor, corrija os erros e tente novamente.")
     <div>
-        <div class="editor-label">
-            @Html.LabelFor(m => m.NewQuestion)
-        </div>
         <div class="editor-field">
             @Html.TextBoxFor(m => m.NewQuestion)
+            @Html.ValidationMessageFor(m => m.NewQuestion)
         </div>
         <p>
             <input type="submit" value="Enviar" />
         </p>
     </div>
 }
+<div>
+    <p>@TempData["mensagem"]</p>
+</div>
+<hr />
 <div>
     @Html.Partial("_Questions")
 </div>

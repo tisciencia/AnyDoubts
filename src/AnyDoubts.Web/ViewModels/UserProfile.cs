@@ -8,8 +8,7 @@ namespace AnyDoubts.Web.ViewModels
     {
         public IList<Question> Questions { get; set; }
         
-        [Required]
-        [Display(Name = "Pergunte-me o que quiser")]        
+        [Required]        
         [StringLength(255, ErrorMessage = "Must be less than 255 characters")]
         public string NewQuestion { get; set; }
     }

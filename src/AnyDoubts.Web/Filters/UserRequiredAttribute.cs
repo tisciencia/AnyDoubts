@@ -33,7 +33,7 @@ namespace AnyDoubts.Web.Filters
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var username = filterContext.ActionParameters[UserName] as string;
-            var user = new User(username);
+            var user = Users.Load(u => u.Username == username);            
             if (!Users.IsStored(user) && username != "favicon.ico")
             {
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary
