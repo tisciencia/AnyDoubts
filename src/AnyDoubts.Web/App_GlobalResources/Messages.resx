@@ -120,6 +120,12 @@
   <data name="NoQuestionsAnswered" xml:space="preserve">
     <value>O usuário ainda não respondeu nenhuma pergunta.</value>
   </data>
+  <data name="NoQuestionsWereAskedForYouYet" xml:space="preserve">
+    <value>Nenhuma pergunta foi feita para você ainda.</value>
+  </data>
+  <data name="QuestionDeletedWithSuccess" xml:space="preserve">
+    <value>Pergunta excluída com sucesso!</value>
+  </data>
   <data name="QuestionPostedWithSuccess" xml:space="preserve">
     <value>Pergunta enviada com sucesso!</value>
   </data>

@@ -23,8 +23,8 @@ namespace AnyDoubts.Web.Controllers
             return ListUsersQuestions(username);
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
         [UserRequired]
+        [AcceptVerbs(HttpVerbs.Post)]        
         public ActionResult Index(string username, UserProfile profile)
         {
             var userProfile = Users.Load(user => user.Username == username);

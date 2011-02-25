@@ -37,7 +37,7 @@ namespace AnyDoubts.DAO
         public T Load(Expression<Func<T, bool>> whereCondition)
         {
             return GetQuery().SingleOrDefault(whereCondition);  //return GetQuery().Where(whereCondition).SingleOrDefault();
-        }
+        }   
 
         public void Add(T entity)
         {

@@ -1,34 +1,38 @@
-﻿@{
+﻿@model AnyDoubts.Web.ViewModels.Inbox
+@{
     ViewBag.Title = "InBox";
 }
-
-<h2>Perguntas</h2>
-
-@if (ViewBag.Message != null)
-{ 
-    <p>@ViewBag.Message</p>
+<h2>
+    Perguntas</h2>
+<p>@TempData["mensagem"]</p>
+@if (Model != null && Model.Questions.Count > 0)
+{
+    for (int i = 0; i < Model.Questions.Count; i++)
+    {
+        using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true, "A criação da conta não foi bem sucedida. Por favor, corrija os erros e tente novamente.")        
+            <div style="background-color: #e8eef4">
+                <div class="editor-label">
+                    <strong>Pergunta:</strong> @Html.DisplayFor(m => m.Questions[i].Message)
+                </div>
+                <div class="editor-label">
+                    <strong>Realizada em:</strong> @Html.DisplayFor(m => m.Questions[i].DateCreated)
+                </div>
+                <div class="editor-field">
+                    @Html.TextAreaFor(m => m.Questions[i].Answer)
+                    @Html.ValidationMessageFor(m => m.Questions[i].Answer)
+                </div>
+                <div>
+                    <input type="submit" value="Postar" />
+                    @Html.ActionLink("Excluir", "Delete", "Account", new { idQuestion = Model.Questions[i].ID }, null)
+                </div>
+            </div>
+            <hr />
+        }
+    }
 }
 else
-{ 
-<table>
-    <tr>       
-        <th>
-            Pergunta
-        </th>
-        <th>
-            Resposta
-        </th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @item.Message
-            </td>
-            <td>
-                @item.Answer
-            </td>
-        </tr>
-    }
-</table>   
+{
+<p>@ViewBag.DataMessage</p>
 }

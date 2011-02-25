@@ -11,6 +11,7 @@ using Ninject;
 using System.Web.Security;
 using AnyDoubts.Web.ViewModels;
 using AutoMapper;
+using Resources;
 
 namespace AnyDoubts.Web.Controllers
 {
@@ -93,9 +94,7 @@ namespace AnyDoubts.Web.Controllers
         public ActionResult InBox()
         {
             ViewBag.UserName = User.Identity.Name;
-            var questions = Questions.Unanswered(User.Identity.Name);
-            if (questions.Count == 0) ViewBag.Message = "The user has not questions";
-            return View(questions);            
+            return ListUsersQuestions(User.Identity.Name);            
         }
 
         public ActionResult RetrieveUsername()
@@ -123,6 +122,26 @@ namespace AnyDoubts.Web.Controllers
         public ActionResult Settings()
         {
             return View();
+        }
+        
+        [Authorize]
+        public ActionResult Delete(string idQuestion)
+        {
+            Question question = Questions.LoadByID(idQuestion);
+            if (Questions.IsStored(question))
+            {
+                Questions.Delete(question);
+                Questions.Commit();
+                TempData["mensagem"] = Messages.QuestionDeletedWithSuccess;
+            }            
+            return RedirectToAction("InBox");
+        }
+
+        private ViewResult ListUsersQuestions(string username)
+        {
+            var questions = Questions.Unanswered(username);
+            if (questions.Count == 0) ViewBag.DataMessage = Messages.NoQuestionsWereAskedForYouYet;
+            return View("InBox", new Inbox { Questions = questions });
         }
     }
 }

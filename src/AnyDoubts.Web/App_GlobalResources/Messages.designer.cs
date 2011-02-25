@@ -70,6 +70,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nenhuma pergunta foi feita para você ainda..
+        /// </summary>
+        internal static string NoQuestionsWereAskedForYouYet {
+            get {
+                return ResourceManager.GetString("NoQuestionsWereAskedForYouYet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pergunta excluída com sucesso!.
+        /// </summary>
+        internal static string QuestionDeletedWithSuccess {
+            get {
+                return ResourceManager.GetString("QuestionDeletedWithSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pergunta enviada com sucesso!.
         /// </summary>
         internal static string QuestionPostedWithSuccess {

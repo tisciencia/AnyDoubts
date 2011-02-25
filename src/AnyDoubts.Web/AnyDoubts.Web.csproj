@@ -90,6 +90,7 @@
     <Compile Include="Services\FormsAuthenticationService.cs" />
     <Compile Include="Services\IFormsAuthenticationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Inbox.cs" />
     <Compile Include="ViewModels\UserProfile.cs" />
     <Compile Include="ViewModels\UserSignIn.cs" />
     <Compile Include="ViewModels\UserSignUp.cs" />

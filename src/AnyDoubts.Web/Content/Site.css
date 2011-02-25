@@ -343,3 +343,10 @@ div#title
 {
     width: 6em;
 }
+
+
+/* LAYOUT ESPECIFICO DO ANYDOUBTS */
+.Question
+{
+	background-color: #e8eef4;
+}

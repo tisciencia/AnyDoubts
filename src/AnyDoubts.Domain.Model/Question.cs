@@ -10,6 +10,7 @@ namespace AnyDoubts.Domain.Model
 		public string Answer { get; set; }
 		public User From { get; private set; }
         public User To { get; private set; }
+        public DateTime DateCreated { get; private set; }
 		
 		public bool IsAnswered
 		{
@@ -29,6 +30,7 @@ namespace AnyDoubts.Domain.Model
                 throw new ArgumentException("Iinvalid message");
 
 			ID = Guid.NewGuid();
+            DateCreated = DateTime.Now;
 			To = to;
 			From = from;
 			Message = message;
