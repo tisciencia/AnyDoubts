@@ -12,6 +12,7 @@ using System.Web.Security;
 using AnyDoubts.Web.ViewModels;
 using AutoMapper;
 using Resources;
+using AnyDoubts.Web.Filters;
 
 namespace AnyDoubts.Web.Controllers
 {
@@ -97,6 +98,24 @@ namespace AnyDoubts.Web.Controllers
             return ListUsersQuestions(User.Identity.Name);            
         }
 
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult InBox(Inbox profile)
+        {
+            if (ModelState.IsValid)
+            {
+                var question = Questions.LoadByID(profile.ID);
+                if (question != null)
+                {
+                    question.Answer = profile.Answer;
+                    Questions.Update(question);
+                    Questions.Commit();
+                }
+            }
+
+            TempData["mensagem"] = Messages.QuestionAnsweredWithSuccess;
+            return RedirectToAction("InBox");
+        }
+
         public ActionResult RetrieveUsername()
         {
             return View();
@@ -140,7 +159,7 @@ namespace AnyDoubts.Web.Controllers
         private ViewResult ListUsersQuestions(string username)
         {
             var questions = Questions.Unanswered(username);
-            if (questions.Count == 0) ViewBag.DataMessage = Messages.NoQuestionsWereAskedForYouYet;
+            if (questions.Count == 0) ViewBag.DataMessage = Messages.ThereIsNoQuestionForYouAnswer;
             return View("InBox", new Inbox { Questions = questions });
         }
     }
