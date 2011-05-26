@@ -19,7 +19,7 @@ namespace AnyDoubts.Web.Controllers
     {
         [Inject]
         public IUsers Users { get; set; }
-        [Inject]
+        [Inject]    
         public IQuestions Questions { get; set; }
         public IFormsAuthenticationService FormsService { get; set; }
 

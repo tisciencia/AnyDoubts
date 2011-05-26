@@ -1,4 +1,17 @@
 ﻿@model AnyDoubts.Web.ViewModels.Inbox
+
+@helper DisplayFrom(AnyDoubts.Domain.Model.User userFrom)
+{
+    if (userFrom != null)
+    {
+        @Html.ActionLink(userFrom.Username, "Index", "User", new { username = userFrom.Username }, null)
+    }
+    else
+    {
+        <text>Anônimo</text>
+    }        
+}
+
 @{
     ViewBag.Title = "InBox";
 }
@@ -11,28 +24,30 @@
     {
         using (Html.BeginForm())
         {
-            @Html.ValidationSummary(true, "A criação da conta não foi bem sucedida. Por favor, corrija os erros e tente novamente.")        
-            <div style="background-color: #e8eef4">
-                <div class="editor-label">
-                    <strong>Pergunta:</strong> @Html.DisplayFor(m => m.Questions[i].Message)
-                </div>
-                <div class="editor-label">
-                    <strong>Realizada em:</strong> @Html.DisplayFor(m => m.Questions[i].DateCreated)
-                </div>
-                <div class="editor-field">
-                    @Html.TextAreaFor(m => m.Questions[i].Answer)
-                    @Html.ValidationMessageFor(m => m.Questions[i].Answer)
-                </div>
-                <div>
-                    <input type="submit" value="Postar" />
-                    @Html.ActionLink("Excluir", "Delete", "Account", new { idQuestion = Model.Questions[i].ID }, null)
-                </div>
-            </div>
-            <hr />
+    @Html.ValidationSummary(true, "A criação da conta não foi bem sucedida. Por favor, corrija os erros e tente novamente.")        
+    <div style="background-color: #e8eef4">
+        <div class="editor-label">
+            <strong>Pergunta realizada em:</strong> @Html.DisplayFor(m => m.Questions[i].DateCreated)
+            <strong>por:</strong> @DisplayFrom(Model.Questions[i].From)
+        </div>
+        <div class="editor-label">
+            <strong>Pergunta:</strong> @Html.DisplayFor(m => m.Questions[i].Message)
+        </div>
+        <div class="editor-field">
+            <strong>Resposta:</strong>
+            @Html.TextAreaFor(m => m.Questions[i].Answer)
+            @Html.ValidationMessageFor(m => m.Questions[i].Answer)
+        </div>
+        <div>
+            <input type="submit" value="Postar resposta" />
+            @Html.ActionLink("Excluir", "Delete", "Account", new { idQuestion = Model.Questions[i].ID }, null)
+        </div>
+    </div>
+    <hr />
         }
     }
 }
 else
 {
-<p>@ViewBag.DataMessage</p>
+    <p>@ViewBag.DataMessage</p>
 }

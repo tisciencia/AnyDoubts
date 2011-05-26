@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnyDoubts.Domain.Repository
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnyDoubts.Domain.Model", "AnyDoubts.Domain.Model\AnyDoubts.Domain.Model.csproj", "{7CFF62B5-AE85-4186-885B-A363A4EB28C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnyDoubts.Specs", "AnyDoubts.Specs\AnyDoubts.Specs.csproj", "{25CDA87B-ABCB-4761-B9D5-AFBF659FAAE4}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnyDoubts.DAO", "AnyDoubts.DAO\AnyDoubts.DAO.csproj", "{01DE759A-A0B9-4487-AB10-4B38A4DA185D}"
 EndProject
 Global
@@ -41,10 +39,6 @@ Global
 		{7CFF62B5-AE85-4186-885B-A363A4EB28C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CFF62B5-AE85-4186-885B-A363A4EB28C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CFF62B5-AE85-4186-885B-A363A4EB28C0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{25CDA87B-ABCB-4761-B9D5-AFBF659FAAE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{25CDA87B-ABCB-4761-B9D5-AFBF659FAAE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{25CDA87B-ABCB-4761-B9D5-AFBF659FAAE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{25CDA87B-ABCB-4761-B9D5-AFBF659FAAE4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{01DE759A-A0B9-4487-AB10-4B38A4DA185D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{01DE759A-A0B9-4487-AB10-4B38A4DA185D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01DE759A-A0B9-4487-AB10-4B38A4DA185D}.Release|Any CPU.ActiveCfg = Release|Any CPU
